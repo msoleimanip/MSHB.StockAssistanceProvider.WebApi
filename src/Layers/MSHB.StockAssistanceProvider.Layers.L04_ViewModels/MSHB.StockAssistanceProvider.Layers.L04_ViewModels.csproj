@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MSHB.StockAssistanceProvider.Layers.L00_BaseModels\MSHB.StockAssistanceProvider.Layers.L00_BaseModels.csproj" />
+    <ProjectReference Include="..\MSHB.StockAssistanceProvider.Layers.L01_Entities\MSHB.StockAssistanceProvider.Layers.L01_Entities.csproj" />
+  </ItemGroup>
+
+</Project>

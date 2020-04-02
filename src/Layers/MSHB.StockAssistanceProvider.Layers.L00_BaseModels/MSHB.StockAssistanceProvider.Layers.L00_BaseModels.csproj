@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="UtilsClass\**" />
+    <EmbeddedResource Remove="UtilsClass\**" />
+    <None Remove="UtilsClass\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\MSHB.StockAssistanceProvider.Shared.Common\MSHB.StockAssistanceProvider.Shared.Common.csproj" />
+    <ProjectReference Include="..\MSHB.StockAssistanceProvider.Layers.L01_Entities\MSHB.StockAssistanceProvider.Layers.L01_Entities.csproj" />
+  </ItemGroup>
+
+</Project>
