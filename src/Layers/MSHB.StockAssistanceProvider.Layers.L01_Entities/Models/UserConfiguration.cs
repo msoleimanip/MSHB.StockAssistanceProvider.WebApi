@@ -26,6 +26,7 @@ namespace MSHB.StockAssistanceProvider.Layers.L01_Entities.Models
                 _Configuration = JsonConvert.SerializeObject(value);
             }
         }
+        [ForeignKey("UserId")]
         public virtual User User { get; set; }
     }
 }

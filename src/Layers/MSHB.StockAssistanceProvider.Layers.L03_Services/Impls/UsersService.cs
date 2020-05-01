@@ -64,10 +64,12 @@ namespace MSHB.StockAssistanceProvider.Layers.L03_Services.Impls
                     FirstName = userForm.FirstName,
                     Description = userForm.Description,
                     IsActive = userForm.IsActive,
-                    IsPresident = userForm.IsPresident,
+                    UserType = userForm.UserType,
                     LastName = userForm.LastName,
+                    AvailableUserType= userForm.AvailableUserType,
                     Password = _securityService.GetSha256Hash(userForm.Password),
                     SerialNumber = Guid.NewGuid().ToString("N"),
+
                     Location = userForm.Location,
                     PhoneNumber = userForm.PhoneNumber,
                     Username = userForm.Username.ToLower()
@@ -128,11 +130,13 @@ namespace MSHB.StockAssistanceProvider.Layers.L03_Services.Impls
                 userEdt.FirstName = userForm.FirstName;
                 userEdt.Description = userForm.Description;
                 userEdt.IsActive = userForm.IsActive;
-                userEdt.IsPresident = userForm.IsPresident;
+                userEdt.UserType = userForm.UserType;
+                userEdt.AvailableUserType = userForm.AvailableUserType;
                 userEdt.LastName = userForm.LastName;
                 if (!string.IsNullOrEmpty(userForm.Password))
                     userEdt.Password = _securityService.GetSha256Hash(userForm.Password);
                 userEdt.SerialNumber = Guid.NewGuid().ToString("N");
+
                 userEdt.Location = userForm.Location;
                 userEdt.PhoneNumber = userForm.PhoneNumber;
                 _context.Users.Update(userEdt);
@@ -159,9 +163,9 @@ namespace MSHB.StockAssistanceProvider.Layers.L03_Services.Impls
                 Location = respUser.Location,
                 PhoneNumber = respUser.PhoneNumber,
                 IsActive = respUser.IsActive,
-                IsPresident = respUser.IsPresident,
+                UserType = respUser.UserType,
+                AvailableUserType = respUser.AvailableUserType,
                 GroupAuthId = respUser.GroupAuthId,
-                UserConfigurationId = respUser.UserConfigurationId,
                 LastLockoutDate = respUser.LastLockoutDate,
                 LastPasswordChangedDate = respUser.LastPasswordChangedDate,
                 CreationDate = respUser.CreationDate,
@@ -233,9 +237,9 @@ namespace MSHB.StockAssistanceProvider.Layers.L03_Services.Impls
                 Location = respUser.Location,
                 PhoneNumber = respUser.PhoneNumber,
                 IsActive = respUser.IsActive,
-                IsPresident = respUser.IsPresident,
+                UserType = respUser.UserType,
+                AvailableUserType=respUser.AvailableUserType,
                 GroupAuthId = respUser.GroupAuthId,
-                UserConfigurationId = respUser.UserConfigurationId,
                 LastLockoutDate = respUser.LastLockoutDate,
                 LastPasswordChangedDate = respUser.LastPasswordChangedDate,
                 CreationDate = respUser.CreationDate,
@@ -277,12 +281,12 @@ namespace MSHB.StockAssistanceProvider.Layers.L03_Services.Impls
             return await _context.Users.FirstOrDefaultAsync(x => x.Username == username && x.Password == passwordHash);
         }
 
+
         public async Task<string> GetSerialNumberAsync(Guid userId)
         {
             var user = await FindUserAsync(userId);
             return user.SerialNumber;
         }
-
 
         public async Task<bool> ChangeActivateUserAsync(User user, ChangeActivationFormModel userForm)
         {

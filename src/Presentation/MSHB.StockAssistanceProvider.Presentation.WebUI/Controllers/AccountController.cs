@@ -25,18 +25,13 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI.Controllers
         private readonly IUsersService _usersService;
         private readonly ITokenStoreService _tokenStoreService;
 
-
-        public AccountController(
-            IUsersService usersService,
-            ITokenStoreService tokenStoreService
-            )
+        public AccountController(IUsersService usersService, ITokenStoreService tokenStoreService)
         {
             _usersService = usersService;
             _usersService.CheckArgumentIsNull(nameof(usersService));
 
             _tokenStoreService = tokenStoreService;
             _tokenStoreService.CheckArgumentIsNull(nameof(_tokenStoreService));
-
         }
 
         [AllowAnonymous]
@@ -45,7 +40,6 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI.Controllers
         public async Task<IActionResult> Login([FromBody]  LoginViewModels loginUser)
         {
             var user = await _usersService.FindUserLoginAsync(loginUser.UserName, loginUser.Password);
-
 
             var (accessToken, refreshToken) = await _tokenStoreService.CreateJwtTokens(user, refreshTokenSource: null);
             return Ok(GetRequestResult(new { access_token = accessToken, refresh_token = refreshToken }));
@@ -72,8 +66,6 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI.Controllers
             // The Jwt implementation does not support "revoke OAuth token" (logout) by design.
             // Delete the user's tokens from the database (revoke its bearer token)
             await _tokenStoreService.RevokeUserBearerTokensAsync(userIdValue, refreshToken);
-          
-
             return Ok(GetRequestResult(true));
         }
 
@@ -100,8 +92,7 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI.Controllers
         [HttpGet("[action]"), HttpPost("[action]")]
         [ValidateModelAttribute]
         [Authorize(Roles = "Account-ChangeActivateUser")]
-        public async Task<IActionResult> ChangeActivateUser([FromBody]
-                                                                ChangeActivationFormModel userForm)
+        public async Task<IActionResult> ChangeActivateUser([FromBody]ChangeActivationFormModel userForm)
         {
             var users = await _usersService.ChangeActivateUserAsync(HttpContext.GetUser(), userForm);
             return Ok(GetRequestResult(users));
@@ -110,8 +101,7 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI.Controllers
         [HttpGet("[action]"), HttpPost("[action]")]
         [ValidateModelAttribute]
         [Authorize(Roles = "Account-ChangePassword")]
-        public async Task<IActionResult> ChangePassword([FromBody]
-                                                                ChangePasswordFormModel userForm)
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordFormModel userForm)
         {
             var users = await _usersService.ChangePasswordAsync(HttpContext.GetUser(), userForm);
             return Ok(GetRequestResult(users));
@@ -123,10 +113,9 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI.Controllers
         public async Task<IActionResult> GetUsers([FromBody] SearchUserFormModel searchUserForm)
         {
             return Ok(GetRequestResult(await _usersService.GetUsersAsync(searchUserForm)));
-
         }
 
-       
+
         [HttpGet("[action]")]
         [ValidateModelAttribute]
         [Authorize(Roles = "Account-GetUserById")]
@@ -134,11 +123,5 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI.Controllers
         {
             return Ok(GetRequestResult(await _usersService.GetUserById(HttpContext.GetUser(), Id)));
         }
-
-
-      
-
     }
-
-    
 }

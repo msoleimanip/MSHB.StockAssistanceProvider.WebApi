@@ -4,10 +4,11 @@ using System.Text;
 
 namespace MSHB.StockAssistanceProvider.Layers.L01_Entities.Enums
 {
-    public enum PresidentType
+    public enum AnalyzeState
     {
-        Admin = 1,
-        Simple,
+        New=1,
+        Refined,
+        Closed
 
     }
 }

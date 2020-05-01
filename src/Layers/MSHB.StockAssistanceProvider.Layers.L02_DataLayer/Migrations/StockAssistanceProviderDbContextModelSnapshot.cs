@@ -54,6 +54,27 @@ namespace MSHB.StockAssistanceProvider.Layers.L02_DataLayer.Migrations
                     b.ToTable("Log_T");
                 });
 
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Board", b =>
+                {
+                    b.Property<long>("CComVal")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LBoard")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CComVal");
+
+                    b.ToTable("Board_T");
+                });
+
             modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.FileAddress", b =>
                 {
                     b.Property<Guid>("FileId")
@@ -124,6 +145,512 @@ namespace MSHB.StockAssistanceProvider.Layers.L02_DataLayer.Migrations
                     b.ToTable("GroupAuthRole_T");
                 });
 
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Instrument", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("BaseVol")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CComVal")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CGdSVal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CGrValCot")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CIsin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("CSecVal")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CSoSecVal")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CSocCSAC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CValMne")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CloseDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
+
+                    b.Property<int>("DESop")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DEVen")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DInMar")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Flow")
+                        .HasColumnType("int");
+
+                    b.Property<long>("InsCode")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("InstrumentID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("InstrumentState")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InstrumentType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LSoc30")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LVal18")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LVal18AFC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LVal30")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("PSaiSMaxOkValMdinOccurs")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PSaiSMinOkValMdinOccurs")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("QNmVlo")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("QPasCotFxeVal")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QQtTranMarVal")
+                        .HasColumnType("int");
+
+                    b.Property<long>("QtitMaxSaiOmProd")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("QtitMinSaiOmProd")
+                        .HasColumnType("bigint");
+
+                    b.Property<short>("Valid")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("YDeComp")
+                        .HasColumnType("int");
+
+                    b.Property<string>("YMarNSC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("YOPSJ")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YUniExpP")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YVal")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("ZTitad")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CComVal");
+
+                    b.HasIndex("CSecVal");
+
+                    b.HasIndex("CSoSecVal");
+
+                    b.ToTable("Instrument_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentAnalayzeBuy", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AnalyzeState")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AnalyzeType")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("AnalyzerUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
+
+                    b.Property<DateTime?>("FromDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("InstrumentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsSoftDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("Price")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("ToDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnalyzerUserId");
+
+                    b.HasIndex("InstrumentId");
+
+                    b.ToTable("InstrumentAnalayzeBuy_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentAnalayzeSell", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("AnalyzeState")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AnalyzeType")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("AnalyzerUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
+
+                    b.Property<DateTime?>("FromDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("InstrumentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsSoftDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("Price")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("ToDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AnalyzerUserId");
+
+                    b.HasIndex("InstrumentId");
+
+                    b.ToTable("InstrumentAnalayzeSell_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentCycle", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime2")
+                        .HasDefaultValueSql("getdate()");
+
+                    b.Property<long>("InstrumentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int?>("InstrumentState")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("SenderUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstrumentId");
+
+                    b.HasIndex("InstrumentState");
+
+                    b.HasIndex("SenderUserId");
+
+                    b.ToTable("InstrumentCycle_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentDescriptionBuy", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("InstrumentAnalayzeBuyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstrumentAnalayzeBuyId");
+
+                    b.ToTable("InstrumentDescriptionBuy_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentDescriptionSell", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("InstrumentAnalayzeSellId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstrumentAnalayzeSellId");
+
+                    b.ToTable("InstrumentDescriptionSell_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentInformation", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("InstrumentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<int>("InstrumentInformationType")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstrumentId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("InstrumentInformation_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentUserMapper", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<long>("BaseVol")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CComVal")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CGdSVal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CGrValCot")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CIsin")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("CSecVal")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CSoSecVal")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("CSocCSAC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CValMne")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DESop")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DEVen")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DInMar")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Flow")
+                        .HasColumnType("int");
+
+                    b.Property<long>("InsCode")
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("InstrumentID")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("InstrumentState")
+                        .HasColumnType("int");
+
+                    b.Property<int>("InstrumentType")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LSoc30")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LVal18")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LVal18AFC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LVal30")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("PSaiSMaxOkValMdinOccurs")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("PSaiSMinOkValMdinOccurs")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("QNmVlo")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<int>("QPasCotFxeVal")
+                        .HasColumnType("int");
+
+                    b.Property<int>("QQtTranMarVal")
+                        .HasColumnType("int");
+
+                    b.Property<long>("QtitMaxSaiOmProd")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("QtitMinSaiOmProd")
+                        .HasColumnType("bigint");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<short>("Valid")
+                        .HasColumnType("smallint");
+
+                    b.Property<int>("YDeComp")
+                        .HasColumnType("int");
+
+                    b.Property<string>("YMarNSC")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("YOPSJ")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YUniExpP")
+                        .HasColumnType("int");
+
+                    b.Property<int>("YVal")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("ZTitad")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CComVal");
+
+                    b.HasIndex("CSecVal");
+
+                    b.HasIndex("CSoSecVal");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("InstrumentUserMapper_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.MarketValue", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("MarketValuePrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("MarketValue_T");
+                });
+
             modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.ReportStructure", b =>
                 {
                     b.Property<long>("Id")
@@ -157,6 +684,34 @@ namespace MSHB.StockAssistanceProvider.Layers.L02_DataLayer.Migrations
                     b.ToTable("ReportStructure_T");
                 });
 
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Request", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("InstrumentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<Guid>("SenderUserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstrumentId");
+
+                    b.HasIndex("SenderUserId");
+
+                    b.ToTable("Request_T");
+                });
+
             modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Role", b =>
                 {
                     b.Property<long>("Id")
@@ -185,11 +740,128 @@ namespace MSHB.StockAssistanceProvider.Layers.L02_DataLayer.Migrations
                     b.ToTable("Role_T");
                 });
 
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Sector", b =>
+                {
+                    b.Property<long>("CSecVal")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LSecVal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CSecVal");
+
+                    b.ToTable("Sector_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.SpecialInstrumentAnalayzedBuy", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("InstrumentAnalayzeBuyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsSoftDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstrumentAnalayzeBuyId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SpecialInstrumentAnalayzedBuy_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.SpecialInstrumentAnalayzedSell", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("InstrumentAnalayzeSellId")
+                        .HasColumnType("bigint");
+
+                    b.Property<bool?>("IsSoftDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Reason")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstrumentAnalayzeSellId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SpecialInstrumentAnalayzedSell_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.SubSector", b =>
+                {
+                    b.Property<long?>("CSecVal")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CSoSecVal")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DEven")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LSoSecVal")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("CSecVal");
+
+                    b.ToTable("SubSector_T");
+                });
+
             modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<int?>("AvailableUserType")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("CreationDate")
                         .HasColumnType("datetime2");
@@ -207,9 +879,6 @@ namespace MSHB.StockAssistanceProvider.Layers.L02_DataLayer.Migrations
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
-
-                    b.Property<int?>("IsPresident")
-                        .HasColumnType("int");
 
                     b.Property<DateTime?>("LastLockoutDate")
                         .HasColumnType("datetime2");
@@ -239,16 +908,12 @@ namespace MSHB.StockAssistanceProvider.Layers.L02_DataLayer.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<string>("SajadUserName")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
-
                     b.Property<string>("SerialNumber")
                         .HasColumnType("nvarchar(450)")
                         .HasMaxLength(450);
 
-                    b.Property<long?>("UserConfigurationId")
-                        .HasColumnType("bigint");
+                    b.Property<int>("UserType")
+                        .HasColumnType("int");
 
                     b.Property<string>("Username")
                         .IsRequired()
@@ -260,8 +925,6 @@ namespace MSHB.StockAssistanceProvider.Layers.L02_DataLayer.Migrations
                     b.HasIndex("GroupAuthId");
 
                     b.HasIndex("Id");
-
-                    b.HasIndex("UserConfigurationId");
 
                     b.HasIndex("Username")
                         .IsUnique();
@@ -287,6 +950,68 @@ namespace MSHB.StockAssistanceProvider.Layers.L02_DataLayer.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("UserConfiguration_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.UserRankInstrumentBuy", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("InstrumentAnalayzeBuyId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RankNumber")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstrumentAnalayzeBuyId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRankInstrumentBuy_T");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.UserRankInstrumentSell", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("CreationDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("InstrumentAnalayzeSellId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime?>("LastUpdateDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("RankNumber")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("UserId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InstrumentAnalayzeSellId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserRankInstrumentSell_T");
                 });
 
             modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.UserRole", b =>
@@ -365,6 +1090,170 @@ namespace MSHB.StockAssistanceProvider.Layers.L02_DataLayer.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Instrument", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Board", "Board")
+                        .WithMany("Instruments")
+                        .HasForeignKey("CComVal");
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Sector", "Sector")
+                        .WithMany("Instruments")
+                        .HasForeignKey("CSecVal");
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.SubSector", "SubSector")
+                        .WithMany("Instruments")
+                        .HasForeignKey("CSoSecVal");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentAnalayzeBuy", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", "AnalyzerUser")
+                        .WithMany()
+                        .HasForeignKey("AnalyzerUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Instrument", "Instrument")
+                        .WithMany("InstrumentAnalayzeBuys")
+                        .HasForeignKey("InstrumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentAnalayzeSell", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", "AnalyzerUser")
+                        .WithMany()
+                        .HasForeignKey("AnalyzerUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Instrument", "Instrument")
+                        .WithMany("InstrumentAnalayzeSells")
+                        .HasForeignKey("InstrumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentCycle", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Instrument", "Instrument")
+                        .WithMany("InstrumentCycles")
+                        .HasForeignKey("InstrumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", "SenderUser")
+                        .WithMany("InstrumentCycles")
+                        .HasForeignKey("SenderUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentDescriptionBuy", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentAnalayzeBuy", "InstrumentAnalayzeBuy")
+                        .WithMany("InstrumentDescriptionBuys")
+                        .HasForeignKey("InstrumentAnalayzeBuyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentDescriptionSell", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentAnalayzeSell", "InstrumentAnalayzeSell")
+                        .WithMany("InstrumentDescriptionSells")
+                        .HasForeignKey("InstrumentAnalayzeSellId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentInformation", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Instrument", "Instrument")
+                        .WithMany("InstrumentInformations")
+                        .HasForeignKey("InstrumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentUserMapper", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Board", "Board")
+                        .WithMany()
+                        .HasForeignKey("CComVal");
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Sector", "Sector")
+                        .WithMany()
+                        .HasForeignKey("CSecVal");
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.SubSector", "SubSector")
+                        .WithMany()
+                        .HasForeignKey("CSoSecVal");
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", "User")
+                        .WithMany("InstrumentUserMappers")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Request", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Instrument", "Instrument")
+                        .WithMany("Requests")
+                        .HasForeignKey("InstrumentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", "SenderUser")
+                        .WithMany()
+                        .HasForeignKey("SenderUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.SpecialInstrumentAnalayzedBuy", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentAnalayzeBuy", "InstrumentAnalayzeBuy")
+                        .WithMany("SpecialInstrumentAnalayzedBuys")
+                        .HasForeignKey("InstrumentAnalayzeBuyId");
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", "User")
+                        .WithMany("SpecialInstrumentAnalayzedBuys")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.SpecialInstrumentAnalayzedSell", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentAnalayzeSell", "InstrumentAnalayzeSell")
+                        .WithMany("SpecialInstrumentAnalayzedSells")
+                        .HasForeignKey("InstrumentAnalayzeSellId");
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", "User")
+                        .WithMany("SpecialInstrumentAnalayzedSells")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.SubSector", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.Sector", "Sector")
+                        .WithMany()
+                        .HasForeignKey("CSecVal")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", b =>
                 {
                     b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.GroupAuth", "GroupAuth")
@@ -380,6 +1269,32 @@ namespace MSHB.StockAssistanceProvider.Layers.L02_DataLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.UserRankInstrumentBuy", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentAnalayzeBuy", "InstrumentAnalayzeBuy")
+                        .WithMany("UserRankInstrumentBuys")
+                        .HasForeignKey("InstrumentAnalayzeBuyId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", null)
+                        .WithMany("UserRankInstrumentBuys")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.UserRankInstrumentSell", b =>
+                {
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.InstrumentAnalayzeSell", "InstrumentAnalayzeSell")
+                        .WithMany("UserRankInstrumentSells")
+                        .HasForeignKey("InstrumentAnalayzeSellId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.User", null)
+                        .WithMany("UserRankInstrumentSells")
+                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("MSHB.StockAssistanceProvider.Layers.L01_Entities.Models.UserRole", b =>

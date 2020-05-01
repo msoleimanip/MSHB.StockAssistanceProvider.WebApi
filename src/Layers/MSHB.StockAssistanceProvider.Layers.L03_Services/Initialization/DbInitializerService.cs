@@ -84,10 +84,11 @@ namespace MSHB.StockAssistanceProvider.Layers.L03_Services.Initialization
                     FirstName = "مدیر",
                     LastName = "سیستم",
                     IsActive = true,
-                    IsPresident = PresidentType.Admin,
+                    UserType = UserType.Admin,
                     LastLoggedIn = null,
                     Password = _securityService.GetSha256Hash("1234"),
                     SerialNumber = Guid.NewGuid().ToString("N"),
+
                     GroupAuth = groupAuth,
                   
                 };

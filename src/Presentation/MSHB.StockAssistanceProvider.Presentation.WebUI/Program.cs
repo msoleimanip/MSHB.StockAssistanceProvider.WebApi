@@ -4,6 +4,8 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MSHB.StockAssistanceProvider.Layers.L03_Services.Contracts;
+using MSHB.StockAssistanceProvider.Layers.L03_Services.Impls;
 using MSHB.StockAssistanceProvider.Layers.L03_Services.Initialization;
 
 namespace MSHB.StockAssistanceProvider.Presentation.WebUI
@@ -38,7 +40,13 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()    
+                .UseStartup<Startup>()
+                .ConfigureServices(services =>
+                {
+                    services.AddHostedService<ConsumeScopedServiceHostedService>();
+                    services.AddScoped<IScopedProcessingService, ScopedProcessingService>();
+
+                })
                 .UseKestrel(option =>
                 {
                     option.Limits.MaxRequestBodySize = null;

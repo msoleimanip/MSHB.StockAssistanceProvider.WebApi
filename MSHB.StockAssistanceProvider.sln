@@ -13,17 +13,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{99A1F1
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSHB.StockAssistanceProvider.Layers.L00_BaseModels", "src\Layers\MSHB.StockAssistanceProvider.Layers.L00_BaseModels\MSHB.StockAssistanceProvider.Layers.L00_BaseModels.csproj", "{A75CE363-5626-418D-BFE3-3C19A008A648}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSHB.StockAssistanceProvider.Layers.L01_Entities", "src\Layers\MSHB.StockAssistanceProvider.Layers.L01_Entities\MSHB.StockAssistanceProvider.Layers.L01_Entities.csproj", "{1EB5AC21-B9DE-49A3-9072-0A0BBC9AFD1C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSHB.StockAssistanceProvider.Layers.L01_Entities", "src\Layers\MSHB.StockAssistanceProvider.Layers.L01_Entities\MSHB.StockAssistanceProvider.Layers.L01_Entities.csproj", "{1EB5AC21-B9DE-49A3-9072-0A0BBC9AFD1C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSHB.StockAssistanceProvider.Layers.L02_DataLayer", "src\Layers\MSHB.StockAssistanceProvider.Layers.L02_DataLayer\MSHB.StockAssistanceProvider.Layers.L02_DataLayer.csproj", "{87C2138E-8FCE-4F1E-99D8-6E40DEC2F1E1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSHB.StockAssistanceProvider.Layers.L02_DataLayer", "src\Layers\MSHB.StockAssistanceProvider.Layers.L02_DataLayer\MSHB.StockAssistanceProvider.Layers.L02_DataLayer.csproj", "{87C2138E-8FCE-4F1E-99D8-6E40DEC2F1E1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSHB.StockAssistanceProvider.Layers.L03_Services", "src\Layers\MSHB.StockAssistanceProvider.Layers.L03_Services\MSHB.StockAssistanceProvider.Layers.L03_Services.csproj", "{6D00B0B6-01AF-42CF-AE7D-9BDF740FC4B2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSHB.StockAssistanceProvider.Layers.L03_Services", "src\Layers\MSHB.StockAssistanceProvider.Layers.L03_Services\MSHB.StockAssistanceProvider.Layers.L03_Services.csproj", "{6D00B0B6-01AF-42CF-AE7D-9BDF740FC4B2}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSHB.StockAssistanceProvider.Layers.L04_ViewModels", "src\Layers\MSHB.StockAssistanceProvider.Layers.L04_ViewModels\MSHB.StockAssistanceProvider.Layers.L04_ViewModels.csproj", "{26919B16-8B4F-49A2-8F0F-F699A3F357E0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSHB.StockAssistanceProvider.Layers.L04_ViewModels", "src\Layers\MSHB.StockAssistanceProvider.Layers.L04_ViewModels\MSHB.StockAssistanceProvider.Layers.L04_ViewModels.csproj", "{26919B16-8B4F-49A2-8F0F-F699A3F357E0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSHB.StockAssistanceProvider.Presentation.WebUI", "src\Presentation\MSHB.StockAssistanceProvider.Presentation.WebUI\MSHB.StockAssistanceProvider.Presentation.WebUI.csproj", "{0B14F442-0006-47ED-9FCF-307E43495519}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSHB.StockAssistanceProvider.Presentation.WebUI", "src\Presentation\MSHB.StockAssistanceProvider.Presentation.WebUI\MSHB.StockAssistanceProvider.Presentation.WebUI.csproj", "{0B14F442-0006-47ED-9FCF-307E43495519}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MSHB.StockAssistanceProvider.Shared.Common", "src\Shared\MSHB.StockAssistanceProvider.Shared.Common\MSHB.StockAssistanceProvider.Shared.Common.csproj", "{F332FE80-2BBF-48F2-BDA6-1FBB190A3A87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSHB.StockAssistanceProvider.Shared.Common", "src\Shared\MSHB.StockAssistanceProvider.Shared.Common\MSHB.StockAssistanceProvider.Shared.Common.csproj", "{F332FE80-2BBF-48F2-BDA6-1FBB190A3A87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

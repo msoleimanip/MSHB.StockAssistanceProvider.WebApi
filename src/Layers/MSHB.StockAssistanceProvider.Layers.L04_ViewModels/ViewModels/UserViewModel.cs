@@ -15,7 +15,7 @@ namespace MSHB.StockAssistanceProvider.Layers.L04_ViewModels.ViewModels
         public string Location { get; set; }
         public string PhoneNumber { get; set; }
         public bool IsActive { get; set; }
-        public PresidentType? IsPresident { get; set; }
+        public UserType? UserType { get; set; }
         public long? GroupAuthId { get; set; }
         public long? UserConfigurationId { get; set; }
         public DateTime? LastLockoutDate { get; set; }
@@ -23,5 +23,6 @@ namespace MSHB.StockAssistanceProvider.Layers.L04_ViewModels.ViewModels
         public DateTime? CreationDate { get; set; }
         public DateTime? LastVisit { get; set; }       
         public DateTimeOffset? LastLoggedIn { get; set; }
+        public AvailableUserType? AvailableUserType { get; set; }
     }
 }

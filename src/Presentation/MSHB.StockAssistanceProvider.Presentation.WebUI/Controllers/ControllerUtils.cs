@@ -42,7 +42,9 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebCore
                     FirstName = context.User.Identity.GetUserFirstName(),
                     LastName = context.User.Identity.GetUserLastName(),
                     Id = context.User.Identity.GetUserId<Guid>(),
-                    IsPresident = context.User.Identity.GetUserPresident<PresidentType>()
+                    UserType = context.User.Identity.GetUserType<UserType>(),
+                    AvailableUserType = context.User.Identity.GetAvailableUserType<AvailableUserType>()
+
                 };
 
                 return user;
@@ -54,12 +56,12 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebCore
             }
         }
 
-        public static PresidentType GetUserPresident(this HttpContext context)
+        public static UserType GetUserType(this HttpContext context)
         {
             try
             {
-                var IsPresident = (PresidentType)context.User.Identity.GetUserPresident<PresidentType>();
-                return IsPresident;
+                var userType = (UserType)context.User.Identity.GetUserType<UserType>();
+                return userType;
             }
 
             catch (Exception e)

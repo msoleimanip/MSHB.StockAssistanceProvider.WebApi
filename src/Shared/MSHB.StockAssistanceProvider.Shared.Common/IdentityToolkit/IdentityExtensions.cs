@@ -55,11 +55,19 @@ namespace SubPro.WebUI.Shared.Common.IdentityToolkit
         {
             return identity?.GetUserClaimValue(ClaimTypes.NameIdentifier);
         }
-        public static T GetUserPresident<T>(this IIdentity identity)
+        public static T GetAvailableUserType<T>(this IIdentity identity)
         {
-            var isPresident = identity?.GetUserClaimValue("IsPresident");
-            return isPresident != null
-                ? (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromInvariantString(isPresident)
+            var availableUserType = identity?.GetUserClaimValue("AvailableUserType");
+            return availableUserType != null
+                ? (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromInvariantString(availableUserType)
+                : default(T);
+
+        }
+        public static T GetUserType<T>(this IIdentity identity)
+        {
+            var userType = identity?.GetUserClaimValue("UserType");
+            return userType != null
+                ? (T)TypeDescriptor.GetConverter(typeof(T)).ConvertFromInvariantString(userType)
                 : default(T);
 
         }

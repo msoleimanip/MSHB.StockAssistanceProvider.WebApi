@@ -51,7 +51,7 @@ namespace MSHB.StockAssistanceProvider.Layers.L03_Services.Impls
                         downloadViewModel.FileName = Path.GetFileName(fileAddress.FilePath);
                         downloadViewModel.Memory = memory;
                     }
-                   
+
 
                 }
                 return downloadViewModel;
@@ -75,7 +75,7 @@ namespace MSHB.StockAssistanceProvider.Layers.L03_Services.Impls
                 }
                 var extension = file.FileName.Split('.')[file.FileName.Split('.').Length - 1];
                 var fileName = Guid.NewGuid().ToString() + "." + extension;
-                var path = Path.Combine(_siteSettings.Value.UserAttachedFile.PhysicalPath, fileName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), _siteSettings.Value.UserAttachedFile.PhysicalPath, fileName);
 
                 using (var bits = new FileStream(path, FileMode.Create))
                 {

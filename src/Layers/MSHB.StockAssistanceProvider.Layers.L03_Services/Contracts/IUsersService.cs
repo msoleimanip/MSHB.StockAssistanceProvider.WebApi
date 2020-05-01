@@ -11,6 +11,7 @@ namespace MSHB.StockAssistanceProvider.Layers.L03_Services.Contracts
     public interface IUsersService
     {
         Task<string> GetSerialNumberAsync(Guid userId);
+
         Task<User> FindUserAsync(string username, string password);
         Task<User> FindUserLoginAsync(string username, string password);
         Task<User> FindUserAsync(Guid userId);

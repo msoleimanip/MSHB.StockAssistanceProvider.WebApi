@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -7,9 +6,6 @@ using System.Threading.Tasks;
 using DNTCommon.Web.Core;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCompression;
@@ -66,9 +62,7 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI
             services.AddTransient<IGroupAuthenticationService, GroupAuthenticationService>();
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<IReportService, ReportService>();
-            services.AddSingleton<IFileProvider>(
-               new PhysicalFileProvider(
-                   Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+            services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 
 
             services.AddDbContext<StockAssistanceProviderDbContext>(options =>
@@ -178,7 +172,7 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI
                 jsonOptions.JsonSerializerOptions.IgnoreNullValues = true;
             })
               .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-             
+
 
             services.AddResponseCompression();
             services.AddDNTCommonWeb();
@@ -188,69 +182,24 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI
             services.AddCloudscribePagination();
         }
 
-        public void Configure(
-            ILoggerFactory loggerFactory,
-            IApplicationBuilder app,
-            IHostingEnvironment env)
+        public void Configure(ILoggerFactory loggerFactory, IApplicationBuilder app)
         {
             try
             {
-
-
-
+                app.UseResponseCompression();
 
                 loggerFactory.AddLog4Net();
                 loggerFactory.AddDbLogger(serviceProvider: app.ApplicationServices, scopeFactory: app.ApplicationServices.GetRequiredService<IServiceScopeFactory>(), minLevel: LogLevel.Warning);
                 app.UseGlobalExceptionHandler(loggerFactory);
 
-                app.UseAngularAntiforgeryToken();
-                //app.UseExceptionHandler(appBuilder =>
-                //{
-                //    appBuilder.Use(async (context, next) =>
-                //    {
-                //        var error = context.Features[typeof(IExceptionHandlerFeature)] as IExceptionHandlerFeature;
-                //        if (error != null && error.Error is SecurityTokenExpiredException)
-                //        {
-                //            context.Response.StatusCode = 401;
-                //            context.Response.ContentType = "application/json";
-                //            await context.Response.WriteAsync(JsonConvert.SerializeObject(new
-                //            {
-                //                State = 401,
-                //                Msg = "token expired"
-                //            }));
-                //        }
-                //        else if (error != null && error.Error != null)
-                //        {
-                //            context.Response.StatusCode = 500;
-                //            context.Response.ContentType = "application/json";
-                //            await context.Response.WriteAsync(JsonConvert.SerializeObject(new
-                //            {
-                //                State = 500,
-                //                Msg = error.Error.Message
-                //            }));
-                //        }
-                //        else
-                //        {
-                //            await next();
-                //        }
-                //    });
-                //});
-
-
-
-
                 app.UseFileServer();
-
                 app.UseResponseCompression();
 
-
-                app.UseSwagger();
-
-                app.UseSwaggerUI(c =>
-                {
-                    c.SwaggerEndpoint("/swagger/V1/swagger.json", "MSHB.StockAssistanceProvider API V1");
-
-                });
+                //app.UseSwagger();
+                //app.UseSwaggerUI(c =>
+                //{
+                //    c.SwaggerEndpoint("/swagger/V1/swagger.json", "MSHB.StockAssistanceProvider API V1");
+                //});
 
                 app.UseStatusCodePages();
                 app.UseDefaultFiles(); // so index.html is not required
@@ -258,21 +207,17 @@ namespace MSHB.StockAssistanceProvider.Presentation.WebUI
                 app.UseRouting();
                 app.UseCors();
 
+                app.UseAngularAntiforgeryToken();
                 app.UseAuthentication();
-                app.UseAuthorization(); // Must be after UseAuthentication()
-
-
+                app.UseAuthorization();
 
                 app.UseEndpoints(endpoints =>
                 {
-                    endpoints.MapDefaultControllerRoute();
-                    // Which is the same as the template
-                    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+                    endpoints.MapControllers();
                 });
             }
             catch (Exception e)
             {
-
                 Console.WriteLine(e);
                 throw;
             }

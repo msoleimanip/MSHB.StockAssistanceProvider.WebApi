@@ -31,10 +31,11 @@ namespace MSHB.StockAssistanceProvider.Layers.L04_ViewModels.InputForms
 
         public bool IsActive { get; set; }
 
-        public PresidentType IsPresident { get; set; }
+        public UserType UserType { get; set; }
 
         [Required(ErrorMessage = "باید گروه دسترسی کاربر مشخص گردد")]
         public long GroupAuthId { get; set; }
+        public AvailableUserType? AvailableUserType { get; set; }
 
         //[Required(ErrorMessage = "باید رده کاربر مشخص گردد")]
         //public long OrganizationId { get; set; }

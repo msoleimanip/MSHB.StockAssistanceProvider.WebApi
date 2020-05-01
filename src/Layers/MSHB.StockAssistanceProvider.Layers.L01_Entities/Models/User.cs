@@ -15,6 +15,17 @@ namespace MSHB.StockAssistanceProvider.Layers.L01_Entities.Models
         {
             UserRoles = new HashSet<UserRole>();
             UserTokens = new HashSet<UserToken>();
+            SpecialInstrumentAnalayzedBuys = new HashSet<SpecialInstrumentAnalayzedBuy>();
+            SpecialInstrumentAnalayzedSells = new HashSet<SpecialInstrumentAnalayzedSell>();
+            InstrumentCycles = new HashSet<InstrumentCycle>();
+            UserRankInstrumentBuys = new HashSet<UserRankInstrumentBuy>();
+            UserRankInstrumentSells = new HashSet<UserRankInstrumentSell>();
+            InstrumentUserMappers = new HashSet<InstrumentUserMapper>();
+
+
+
+
+
         }
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -38,6 +49,8 @@ namespace MSHB.StockAssistanceProvider.Layers.L01_Entities.Models
 
         [MaxLength(20)]
         public string PhoneNumber { get; set; }
+        [MaxLength(50)]
+        public string SerialNumber { get; set; }
 
         public DateTime? LastLockoutDate { get; set; }
 
@@ -46,37 +59,60 @@ namespace MSHB.StockAssistanceProvider.Layers.L01_Entities.Models
         public DateTime? CreationDate { get; set; }
         public DateTime? LastVisit { get; set; }
 
-
         public bool IsActive { get; set; }
 
         public DateTimeOffset? LastLoggedIn { get; set; }
 
-        [MaxLength(50)]
-        public string SerialNumber { get; set; }
-
-        [MaxLength(200)]
-        public string SajadUserName { get; set; }
-
-        public PresidentType? IsPresident { get; set; }
-
-        [ForeignKey("GroupAuthId")]
-        public long? GroupAuthId { get; set; }
-
-        public virtual GroupAuth GroupAuth { get; set; }
+        public UserType UserType { get; set; }
+        public AvailableUserType? AvailableUserType { get; set; }
 
 
        
+        public long? GroupAuthId { get; set; }
+
+        [ForeignKey("GroupAuthId")]
+        public virtual GroupAuth GroupAuth { get; set; }
 
         public virtual ICollection<UserRole> UserRoles { get; set; }
 
         public virtual ICollection<UserToken> UserTokens { get; set; }
 
-        [ForeignKey("UserConfigurationId")]
-        public long? UserConfigurationId { get; set; }
+        
 
         public virtual ICollection<UserConfiguration> UserConfigurations { get; set; }
 
-       
+
+
+
+        public virtual ICollection<SpecialInstrumentAnalayzedBuy> SpecialInstrumentAnalayzedBuys { get; set; }
+
+
+
+
+        public virtual ICollection<SpecialInstrumentAnalayzedSell> SpecialInstrumentAnalayzedSells { get; set; }
+
+
+
+        public virtual ICollection<InstrumentCycle> InstrumentCycles { get; set; }
+
+
+
+
+        public virtual ICollection<UserRankInstrumentBuy> UserRankInstrumentBuys { get; set; }
+
+
+
+
+        public virtual ICollection<UserRankInstrumentSell> UserRankInstrumentSells { get; set; }
+
+
+        public virtual ICollection<InstrumentUserMapper> InstrumentUserMappers { get; set; }
+
+        
+
+
+
+
 
 
 

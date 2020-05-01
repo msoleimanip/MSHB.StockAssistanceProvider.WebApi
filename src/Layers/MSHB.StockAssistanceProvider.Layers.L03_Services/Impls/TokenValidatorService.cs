@@ -44,7 +44,7 @@ namespace MSHB.StockAssistanceProvider.Layers.L03_Services.Impls
                 return;
             }
 
-            var userIdString = claimsIdentity.FindFirst(ClaimTypes.UserData).Value;
+            var userIdString = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier).Value;
             if (!Guid.TryParse(userIdString, out Guid userId))
             {
                 context.Fail("This is not our issued token. It has no user-id.");
